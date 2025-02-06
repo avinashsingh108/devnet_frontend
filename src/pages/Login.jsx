@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { BASE_URL } from "../constants";
 
 const loginSchema = z.object({
   email: z
@@ -35,7 +36,7 @@ function Login() {
     if (loading) return;
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:3000/login", data, {
+      const res = await axios.post(BASE_URL + "/login", data, {
         withCredentials: true,
       });
 

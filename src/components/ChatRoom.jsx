@@ -8,7 +8,7 @@ import axios from "axios";
 import { BASE_URL } from "../constants";
 import { IoCaretBackOutline } from "react-icons/io5";
 
-const socket = io("http://localhost:3000");
+const socket = io(BASE_URL);
 
 const ChatRoom = () => {
   const { targetUserId } = useParams();
