@@ -96,7 +96,7 @@ const ChatRoom = () => {
   }, [messages]);
 
   return (
-    <div className="w-full bg-gray-800 lg:rounded-r-xl shadow-xl flex flex-col h-full max-md:pt-10 max-md:h-screen">
+    <div className="w-full bg-gray-700 lg:rounded-r-xl shadow-xl flex flex-col h-full max-md:pt-10 max-md:h-screen">
       <div className="flex justify-between bg-gray-900 max-md:pt-12 text-white p-4 border-b lg:rounded-tr-xl border-gray-700 shadow-md">
         <div className="flex items-center ">
           <BsChatDots className="text-2xl mr-2 text-gray-200" />

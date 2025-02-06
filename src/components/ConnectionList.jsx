@@ -27,7 +27,7 @@ const ConnectionList = () => {
   }, []);
 
   return (
-    <div className="w-full p-4 max-md:pt-24 h-full max-md:h-screen bg-gray-900 text-white shadow-xl lg:rounded-l-xl">
+    <div className="w-full p-4 max-md:pt-24 h-full max-md:h-screen bg-gray-800 text-white shadow-xl lg:rounded-l-xl">
       <h2 className="text-xl font-bold mb-5 py-2 border-b border-gray-600">Connections</h2>
 
       {isLoading ? (

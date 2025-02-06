@@ -25,6 +25,8 @@ const Signup = () => {
   const [locationSuggestions, setLocationSuggestions] = useState([]);
   const [isLoadingLocations, setIsLoadingLocations] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     const fetchLocations = async () => {
@@ -98,7 +100,8 @@ const Signup = () => {
       }
     });
     finalFormData.append("skills", JSON.stringify(skills));
-
+    if (loading) return;
+    setLoading(true);
     try {
       const response = await axios.post(BASE_URL + "/signup", finalFormData, {
         withCredentials: true,
@@ -106,12 +109,14 @@ const Signup = () => {
 
       if (response.status === 200) {
         toast.success("Signed up successfully!");
-        navigate("/");
+        navigate("/", { replace: true });
       } else {
         toast.error(response.data.message || "Signup failed.");
       }
     } catch (err) {
       toast.error(err.response?.data || "Signup failed.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -375,7 +380,7 @@ const Signup = () => {
             type="submit"
             className="w-full bg-gray-900 hover:bg-gray-950 px-4 py-2 rounded-md text-white"
           >
-            Sign Up
+            {loading ? "Loading..." : "Sign Up"}
           </button>
         </form>
         <p className="text-gray-400 text-center mt-4 text-sm">

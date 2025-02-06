@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaLock, FaTrashAlt, FaEye, FaEyeSlash } from "react-icons/fa";
 import { BASE_URL } from "../constants";
 import { toast } from "sonner";
+import { validatePassword } from "../utils/validationFncs";
 
 const AccountSettings = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -13,9 +14,18 @@ const AccountSettings = () => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handlePasswordChange = async () => {
     if (currentPassword && newPassword) {
+      const validationMessage = validatePassword(newPassword);
+
+      if (validationMessage) {
+        setMessage(validationMessage);
+        return;
+      } else {
+        setMessage("");
+      }
       setIsUpdating(true);
       try {
         const response = await axios.patch(
@@ -109,7 +119,7 @@ const AccountSettings = () => {
               {showNewPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
-
+          {message && <p className="text-red-500 text-xs sm:text-sm py-1">{message}</p>}
           <button
             onClick={handlePasswordChange}
             disabled={!currentPassword || !newPassword}

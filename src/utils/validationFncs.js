@@ -31,7 +31,8 @@ export const validateForm = (formData, skills, type) => {
     newErrors.email = "Email is required.";
   if (type === "signup" && !formData.password) {
     newErrors.password = "Password is required.";
-  } else if (type === "signup" &&
+  } else if (
+    type === "signup" &&
     !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
       formData.password
     )
@@ -77,4 +78,16 @@ export const validateForm = (formData, skills, type) => {
     }
   }
   return newErrors;
+};
+
+export const validatePassword = (password) => {
+  const passwordRegex = new RegExp(
+    "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+  );
+
+  if (!passwordRegex.test(password)) {
+    return "Password must be 8+ chars with upper, lower, number & special char.";
+  }
+
+  return null;
 };

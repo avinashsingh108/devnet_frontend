@@ -7,7 +7,7 @@ const ChatPage = () => {
   const { targetUserId } = useParams();
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-gray-800 lg:px-10 xl:px-28 md:pt-20 lg:pt-24 xl:pt-32 xl:pb-10 ">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-900 lg:px-10 xl:px-28 md:pt-20 lg:pt-24 xl:pt-32 xl:pb-10 ">
       <div className={`md:block ${targetUserId ? "hidden" : "block"} md:w-2/5`}>
         <ConnectionList />
       </div>

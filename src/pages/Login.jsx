@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 const loginSchema = z.object({
   email: z
@@ -21,7 +22,7 @@ const loginSchema = z.object({
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -31,6 +32,8 @@ function Login() {
   });
 
   const onSubmit = async (data) => {
+    if (loading) return;
+    setLoading(true);
     try {
       const res = await axios.post("http://localhost:3000/login", data, {
         withCredentials: true,
@@ -39,7 +42,7 @@ function Login() {
       if (res.status === 200) {
         dispatch(addUser(res.data.data));
         toast.success("Login successful! Welcome back.");
-        navigate("/");
+        navigate("/", { replace: true });
       } else {
         toast.error(
           res.data.message || "Unexpected response. Please try again."
@@ -50,6 +53,8 @@ function Login() {
         error.response?.data?.message ||
           "Login failed. Please check your credentials and try again."
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -110,7 +115,7 @@ function Login() {
             type="submit"
             className="w-full bg-gray-900 text-white font-medium py-2 rounded-lg hover:bg-gray-950 transition duration-300"
           >
-            Login
+            {loading ? "Loading..." : "Login"}
           </button>
         </form>
 

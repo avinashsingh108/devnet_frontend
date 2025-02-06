@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaUser, FaUsers, FaUserPlus, FaSignOutAlt, FaHome } from "react-icons/fa";
+import {
+  FaUser,
+  FaUsers,
+  FaUserPlus,
+  FaSignOutAlt,
+  FaHome,
+} from "react-icons/fa";
 import axios from "axios";
 import { BASE_URL } from "../constants";
 import { removeUser } from "../store/userSlice";
@@ -11,6 +17,7 @@ import { IoChatboxEllipses, IoSettingsSharp } from "react-icons/io5";
 function Header() {
   const user = useSelector((store) => store.user);
   const [showMenu, setShowMenu] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleMenu = () => {
@@ -23,12 +30,16 @@ function Header() {
   }, [location]);
 
   const handleLogout = async () => {
+    if (isLoggingOut) return;
+    setIsLoggingOut(true);
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
       dispatch(removeUser());
-      navigate("/login");
+      navigate("/login", { replace: true });
     } catch (error) {
       // console.log(error);
+    } finally {
+      setIsLoggingOut(false);
     }
   };
   return (
@@ -38,7 +49,7 @@ function Header() {
           to="/"
           className="text-2xl sm:text-3xl font-bold hover:text-gray-300 transition-colors"
         >
-          <img src="logo.png" className="size-9 sm:size-10 "/>
+          <img src="logo.png" className="size-9 sm:size-10 " />
         </Link>
 
         {user && (
@@ -56,7 +67,7 @@ function Header() {
               } w-80 right-0 z-40 h-full flex flex-col bg-gray-900 shadow-lg transition-transform duration-300 p-6 text-lg font-semibold space-y-6 whitespace-nowrap`}
             >
               <button
-                className="flex justify-center border-b-2 border-gray-800 p-2 w-full text-gray-300 hover:text-white transition-all"
+                className="flex justify-center border-b-2 border-gray-800 p-2 w-full text-gray-300 hover:text-white  transition-all"
                 onClick={handleMenu}
               >
                 <AiOutlineClose className="text-2xl" />
@@ -113,6 +124,14 @@ function Header() {
           className="fixed inset-0 bg-black bg-opacity-50 z-30"
           onClick={handleMenu}
         ></div>
+      )}
+      {isLoggingOut && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+          <div className="text-white text-lg font-semibold flex flex-col items-center">
+            <div className="w-16 h-16 border-4 border-t-4 border-gray-300 border-solid rounded-full animate-spin mb-4"></div>
+            Logging out...
+          </div>
+        </div>
       )}
     </header>
   );
