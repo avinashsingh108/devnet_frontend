@@ -100,14 +100,18 @@ const Signup = () => {
     finalFormData.append("skills", JSON.stringify(skills));
 
     try {
-      await axios.post(BASE_URL + "/signup", finalFormData, {
+      const response = await axios.post(BASE_URL + "/signup", finalFormData, {
         withCredentials: true,
       });
-      toast.success("Signed up successfully! Please login now.");
-      navigate("/login");
+
+      if (response.status === 200) {
+        toast.success("Signed up successfully!");
+        navigate("/");
+      } else {
+        toast.error(response.data.message || "Signup failed.");
+      }
     } catch (err) {
-      // console.error(err);
-      toast.error("Signup failed.");
+      toast.error(err.response?.data || "Signup failed.");
     }
   };
 

@@ -32,17 +32,24 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post(
-        "http://localhost:3000/login",
-        data,
-        { withCredentials: true }
-      );
-      dispatch(addUser(res.data.data));
-      toast.success("Login successful! Welcome back.");
-      navigate("/");
+      const res = await axios.post("http://localhost:3000/login", data, {
+        withCredentials: true,
+      });
+
+      if (res.status === 200) {
+        dispatch(addUser(res.data.data));
+        toast.success("Login successful! Welcome back.");
+        navigate("/");
+      } else {
+        toast.error(
+          res.data.message || "Unexpected response. Please try again."
+        );
+      }
     } catch (error) {
-      toast.error("Login failed. Please check your credentials and try again.");
-      // console.error("Error during login:", error);
+      toast.error(
+        error.response?.data?.message ||
+          "Login failed. Please check your credentials and try again."
+      );
     }
   };
 
@@ -70,7 +77,9 @@ function Login() {
               placeholder="Enter your email"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
             )}
           </div>
 

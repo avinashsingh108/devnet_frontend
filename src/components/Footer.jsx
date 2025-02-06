@@ -3,11 +3,15 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r shadow-lg from-gray-900 via-gray-800 to-gray-900 text-white lg:px-28 py-6">
-      <div className="container mx-auto text-center flex justify-between items-center px-6">
-        <p className="text-lg sm:text-xl font-semibold">DevNet</p>
-
-        <div className="flex justify-center space-x-2 md:space-x-6">
+    <footer className="bg-gradient-to-r shadow-lg from-gray-900 via-gray-800 to-gray-900 text-white py-6 ">
+      <div className=" mx-auto flex flex-col sm:flex-row justify-between items-center space-y-4 md:space-y-0 sm:px-10 md:px-14 lg:px-28 2xl:px-40">
+        <div className="flex space-x-10">
+          <Link
+            to="/"
+            className="text-gray-300 hover:text-white hover:underline transition duration-300"
+          >
+            Home
+          </Link>
           <Link
             to="/about"
             className="text-gray-300 hover:text-white hover:underline transition duration-300"
@@ -22,7 +26,7 @@ function Footer() {
           </Link>
         </div>
 
-        <div className="flex justify-center space-x-2 md:space-x-6">
+        <div className="flex space-x-6">
           <a
             href="https://github.com/avinashsingh108"
             target="_blank"

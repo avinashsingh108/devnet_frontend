@@ -33,12 +33,12 @@ function Header() {
   };
   return (
     <header className="bg-gradient-to-r absolute top-0 left-0 right-0 from-gray-900 via-gray-800 to-gray-900 text-white py-4 px-4 lg:px-8 shadow-lg">
-      <div className="sm:px-10 md:px-14 lg:px-28 flex items-center justify-between">
+      <div className="sm:px-10 md:px-14 lg:px-28 2xl:px-40 flex items-center justify-between">
         <Link
           to="/"
           className="text-2xl sm:text-3xl font-bold hover:text-gray-300 transition-colors"
         >
-          DevNet
+          <img src="logo.png" className="size-9 sm:size-10 "/>
         </Link>
 
         {user && (
