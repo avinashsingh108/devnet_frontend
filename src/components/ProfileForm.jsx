@@ -41,6 +41,7 @@ const ProfileForm = () => {
   const [locationQuery, setLocationQuery] = useState("");
   const [locationSuggestions, setLocationSuggestions] = useState([]);
   const [isLoadingLocations, setIsLoadingLocations] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (userData) {
@@ -120,6 +121,8 @@ const ProfileForm = () => {
     finalFormData.append("skills", JSON.stringify(skills));
 
     try {
+      if (loading) return;
+      setLoading(true);
       const response = await axios.patch(
         BASE_URL + "/profile/edit",
         finalFormData,
@@ -133,6 +136,8 @@ const ProfileForm = () => {
       setEditForm(false);
     } catch (err) {
       // console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -387,9 +392,10 @@ const ProfileForm = () => {
             )}
             <button
               type="submit"
+              disabled={loading}
               className="w-full bg-gray-950 hover:bg-gray-800 px-4 py-2 rounded-md text-white"
             >
-              Update Profile
+              {loading ? "Updating..." : "Update Profile"}
             </button>
           </>
         )}

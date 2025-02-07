@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 const AboutUs = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-gray-900 min-h-screen flex justify-center pt-20 px-4 md:px-0">
+    <div className="bg-gray-900 min-h-screen flex justify-center pt-16 px-4 md:px-0">
       <div className="max-w-5xl w-full px-2 md:px-6 py-6 text-white">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold pt-10 mb-4">
+        <div className="md:text-center mb-6 sm:mb-10">
+          <h1 className="text-3xl sm:text-4xl font-bold pt-8 sm:pt-10 mb-2 sm:mb-4">
             About DevNet
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -44,13 +44,13 @@ const AboutUs = () => {
           </p>
           <button
             onClick={() => navigate("/")}
-            className="mt-4 bg-slate-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition"
+            className="mt-4 bg-gray-800 hover:bg-gray-950 text-white px-6 py-2 rounded-lg font-medium transition"
           >
             Get Started
           </button>
         </div>
 
-        <div className="mt-16 text-center border-t border-gray-700 pt-4">
+        <div className="mt-16 sm:text-center border-t border-gray-700 pt-4">
           <h2 className="text-2xl font-bold mb-4">About the Creator</h2>
           <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
             DevNet was built by{" "}

@@ -6,14 +6,14 @@ const UserCard = ({ user, handleRequest, isRequesting, type }) => {
   const { _id, firstName, lastName, bio, skills, profilePic, location, dob } = user;
 
   return (
-    <div className="max-w-[96%] sm:max-w-sm mx-auto rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-      <div className="relative h-[490px]">
+    <div className="max-w-[87%] sm:max-w-[360px] mx-auto rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+      <div className="relative h-[450px] sm:h-[490px]">
         <img
           src={profilePic}
           alt={`${firstName}'s profile`}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-30% via-black/70 to-black/90 p-6 flex flex-col justify-end">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-30% via-black/70 to-black/90 p-4 sm:p-6 flex flex-col justify-end">
           <div className="mb-1">
             <h2 className="text-2xl font-semibold text-white">
               {firstName} {lastName}{" "}

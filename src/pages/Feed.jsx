@@ -6,6 +6,7 @@ import { addUsersToFeed, removeUserFromFeed } from "../store/feedSlice";
 import UserCard from "../components/UserCard";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import EmptyFeed from "../components/EmptyFeed";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,6 @@ const Feed = () => {
       const response = await axios.get(BASE_URL + "/feed", {
         withCredentials: true,
       });
-      console.log(response.data);
 
       dispatch(addUsersToFeed(response.data.users));
     } catch (error) {
@@ -49,8 +49,8 @@ const Feed = () => {
 
       toast.success(
         status === "interested"
-          ? "You have expressed interest!"
-          : "You have ignored this user."
+          ? "Connection request sent!"
+          : "You’ve skipped this user."
       );
 
       dispatch(removeUserFromFeed(toUserId));
@@ -89,7 +89,17 @@ const Feed = () => {
   }
 
   return (
-    <div className="bg-gray-900 min-h-screen flex items-center justify-center pt-20">
+    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center pt-10 sm:pt-16">
+      {usersInFeed && usersInFeed.length > 0 && (
+        <div className="max-sm:text-left max-sm:px-6">
+          <h1 className="text-white text-2xl font-semibold mb-1">
+            Find Your Network
+          </h1>
+          <p className="text-gray-400 text-sm mb-4">
+            Connect with like-minded people and expand your circle!
+          </p>
+        </div>
+      )}
       {usersInFeed && usersInFeed.length > 0 ? (
         <UserCard
           user={usersInFeed[0]}
@@ -98,10 +108,7 @@ const Feed = () => {
           type="feedCard"
         />
       ) : (
-        <div className="flex flex-col  text-white">
-          <p className="text-2xl font-semibold">No more users to display!</p>
-          <p className="text-sm mt-2">Check back later for new connections.</p>
-        </div>
+        <EmptyFeed fetchUsers={fetchUsers} />
       )}
     </div>
   );

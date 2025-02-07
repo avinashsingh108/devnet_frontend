@@ -1,9 +1,9 @@
 const Policy = () => {
   return (
     <div className="bg-gray-900 min-h-screen flex items-center justify-center pt-16 px-4 md:px-0">
-      <div className="max-w-4xl w-full px-6 py-12 text-white">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold pt-10 mb-4">
+      <div className="max-w-4xl w-full px-2 md:px-6 py-6 text-white">
+        <div className="sm:text-center mb-6 sm:mb-10">
+          <h1 className="text-3xl sm:text-4xl font-bold pt-8 sm:pt-10 mb-2 sm:mb-4">
             Privacy Policy
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">

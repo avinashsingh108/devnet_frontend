@@ -21,7 +21,11 @@ import PublicRoute from "./components/PublicRoute";
 function App() {
   return (
     <Provider store={appStore}>
-      <Toaster richColors position="top-center" />
+      <Toaster
+        richColors
+        position="top-center"
+        toastOptions={{ className: "font-['Outfit']" }}
+      />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}>
@@ -44,9 +48,8 @@ function App() {
               <Route path="chat/:targetUserId" element={<ChatPage />} />
               <Route path="account-settings" element={<AccountSettings />} />
             </Route>
-
-            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </Provider>
