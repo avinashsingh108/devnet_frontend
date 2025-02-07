@@ -8,6 +8,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { BASE_URL } from "../constants";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const loginSchema = z.object({
   email: z
@@ -23,6 +24,7 @@ const loginSchema = z.object({
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -89,7 +91,7 @@ function Login() {
             )}
           </div>
 
-          <div className="mb-6">
+          <div className="mb-6 relative">
             <label
               className="block text-gray-300 font-medium mb-2"
               htmlFor="password"
@@ -97,7 +99,7 @@ function Login() {
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               {...register("password")}
               className={`w-full px-4 py-2 bg-gray-700 text-white border ${
@@ -110,6 +112,12 @@ function Login() {
                 {errors.password.message}
               </p>
             )}
+            <span
+              className="absolute text-lg right-4 top-11 text-white cursor-pointer"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
           </div>
 
           <button

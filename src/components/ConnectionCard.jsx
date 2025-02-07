@@ -13,7 +13,7 @@ const ConnectionCard = ({ data, requestId, handleRequest, type, date }) => {
               className={`size-28 md:size-32 lg:size-40 rounded-full object-cover border-4 border-gray-800`}
             />
           </div>
-
+{console.log(data)}
           {type === "ConnectionRequests" && (
             <p className="text-[10px] text-gray-300 text-center mt-2">
               Received On: {new Date(date).toLocaleDateString()}
@@ -27,16 +27,16 @@ const ConnectionCard = ({ data, requestId, handleRequest, type, date }) => {
               {data.firstName} {data.lastName}
             </h2>
 
-            <p className="text-sm text-gray-400 mt-1">
-              {data.gender}, {calculateAge(data.dob)} years old
+            <p className="text-sm text-gray-400 mt-1 capitalize">
+              {data.gender}, {calculateAge(data.dob)}
             </p>
 
             <p className="text-sm text-gray-400 mt-1">
-              {data.location}, Punjab, IND
+              {data.location}
             </p>
 
             {data.bio && (
-              <p className="text-sm text-gray-300 mt-3 italic">“{data.bio}”</p>
+              <p className="text-sm text-gray-300 mt-2">{data.bio}</p>
             )}
 
             {data.skills.length > 0 && (

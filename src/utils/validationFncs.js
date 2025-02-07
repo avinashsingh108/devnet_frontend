@@ -38,7 +38,7 @@ export const validateForm = (formData, skills, type) => {
     )
   ) {
     newErrors.password =
-      "Password must be 8+ chars with upper, lower, number & special char.";
+      "Password must be 8+ chars with upper, lower, number & special char (@, $, !, %, *, ?, &).";
   }
   if (type === "signup" && !formData.gender)
     newErrors.gender = "Gender is required.";
@@ -86,7 +86,7 @@ export const validatePassword = (password) => {
   );
 
   if (!passwordRegex.test(password)) {
-    return "Password must be 8+ chars with upper, lower, number & special char.";
+    return "Password must be 8+ chars with upper, lower, number & special char (@, $, !, %, *, ?, &).";
   }
 
   return null;

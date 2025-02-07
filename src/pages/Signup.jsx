@@ -89,6 +89,7 @@ const Signup = () => {
 
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
+      toast.error("Please fix the errors before proceeding.");
       return;
     }
     const finalFormData = new FormData();
@@ -254,7 +255,9 @@ const Signup = () => {
             {(locationSuggestions.length > 0 || isLoadingLocations) && (
               <div className="absolute top-full mt-1 w-full rounded-md shadow-lg z-10 max-h-60 overflow-y-auto">
                 {isLoadingLocations ? (
-                  <div className="p-2 text-gray-400">Loading...</div>
+                  <div className="p-2 text-gray-300 bg-gray-800 rounded-lg">
+                    Loading...
+                  </div>
                 ) : (
                   locationSuggestions.map((suggestion, index) => (
                     <div
@@ -288,6 +291,7 @@ const Signup = () => {
               onChange={handleInputChange}
               className="rounded-md px-4 py-2 bg-gray-700 border border-gray-600 text-white focus:outline-none"
               style={{ resize: "none" }}
+              placeholder="Enter 20-200 characters"
             />
             <p className="mt-1 text-sm text-gray-400">
               {formData.bio.length}/200 characters
@@ -306,7 +310,7 @@ const Signup = () => {
                 handleSkillSuggestion(e.target.value);
               }}
               className="rounded-md px-4 py-2 w-full bg-gray-700 border border-gray-600 text-white focus:outline-none"
-              placeholder="Type here..."
+              placeholder="Enter 3-6 skills"
             />
             {errors.skills && (
               <p className="text-red-500 text-sm">{errors.skills}</p>
