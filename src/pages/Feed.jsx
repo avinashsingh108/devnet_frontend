@@ -89,7 +89,7 @@ const Feed = () => {
   }
 
   return (
-    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center pt-10 sm:pt-16">
+    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center pt-6 sm:pt-16">
       {usersInFeed && usersInFeed.length > 0 && (
         <div className="max-sm:text-left max-sm:px-6">
           <h1 className="text-white text-2xl font-semibold mb-1">
