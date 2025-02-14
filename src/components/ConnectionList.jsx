@@ -27,8 +27,8 @@ const ConnectionList = () => {
   }, []);
 
   return (
-    <div className="w-full relative overflow-auto p-4 max-md:pt-24 h-full max-md:h-screen bg-gray-800 text-white shadow-xl lg:rounded-l-xl">
-      <h2 className="text-xl font-bold mb-5 py-2 border-b border-gray-600 sticky top-0 bg-gray-800">Connections</h2>
+    <div className="w-full overflow-auto p-4 max-md:pt-24 h-full max-md:h-screen bg-gray-800 text-white shadow-xl lg:rounded-l-xl">
+      <h2 className="text-xl font-bold mb-5 py-2 border-b border-gray-600">Connections</h2>
 
       {isLoading ? (
         <p className="">Loading...</p>
