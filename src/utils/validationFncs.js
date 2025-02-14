@@ -13,8 +13,8 @@ export const validateProfilePic = (profilePic) => {
   if (!allowedTypes.includes(profilePic.type)) {
     return "Only JPEG, JPG, and PNG files are allowed.";
   }
-  if (profilePic.size > 5 * 1024 * 1024) {
-    return "File size must be less than 5MB.";
+  if (profilePic.size > 1 * 1024 * 1024) {
+    return "File size must be less than 1MB.";
   }
   return null;
 };
