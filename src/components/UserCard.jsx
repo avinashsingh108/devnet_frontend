@@ -6,7 +6,7 @@ const UserCard = ({ user, handleRequest, isRequesting, type }) => {
   const { _id, firstName, lastName, bio, skills, profilePic, location, dob } = user;
 
   return (
-    <div className="max-w-[87%] sm:max-w-[360px] mx-auto rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+    <div className="w-[87%] sm:w-[360px] mx-auto rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <div className="relative h-[450px] sm:h-[490px]">
         <img
           src={profilePic}
