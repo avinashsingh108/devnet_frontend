@@ -33,3 +33,8 @@ _A dynamic networking platform built for developers to connect, collaborate, and
 - **Real-Time Features:** WebSockets for instant messaging
 - **File Uploads:** Cloudinary (for profile images)
 - **Notifications:** Sonner (for toasts)
+---
+
+##  📂Repositories
+- **Frontend Repository:** [Frontend GitHub Repo](https://github.com/avinashsingh108/devnet_frontend)
+- **Backend Repository:** [Backend GitHub Repo](https://github.com/avinashsingh108/devnet_backend)
