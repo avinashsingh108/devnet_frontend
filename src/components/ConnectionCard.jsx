@@ -13,7 +13,6 @@ const ConnectionCard = ({ data, requestId, handleRequest, type, date }) => {
               className={`size-28 md:size-32 lg:size-40 rounded-full object-cover border-4 border-gray-800`}
             />
           </div>
-{console.log(data)}
           {type === "ConnectionRequests" && (
             <p className="text-[10px] text-gray-300 text-center mt-2">
               Received On: {new Date(date).toLocaleDateString()}

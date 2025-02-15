@@ -45,7 +45,7 @@ function Login() {
       if (res.status === 200) {
         dispatch(addUser(res.data.data));
         toast.success("Login successful! Welcome back.");
-        navigate("/", { replace: true });
+        navigate("/feed", { replace: true });
       } else {
         toast.error(
           res.data.message || "Unexpected response. Please try again."

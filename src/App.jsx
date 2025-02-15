@@ -17,27 +17,31 @@ import AccountSettings from "./pages/AccountSettings";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import ScrollToTop from "./components/ScrollToTop";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <Provider store={appStore}>
       <Toaster
         richColors
+        closeButton
         position="top-center"
         toastOptions={{ className: "font-['Outfit']" }}
       />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route element={<Home />}>
+            <Route path="/" element={<LandingPage />} />
             <Route element={<PublicRoute />}>
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
             </Route>
             <Route path="about" element={<AboutUs />} />
             <Route path="privacy-policy" element={<Policy />} />
-
             <Route element={<ProtectedRoute />}>
-              <Route index element={<Feed />} />
+              <Route path="feed" element={<Feed />} />
               <Route path="profile" element={<ProfilePage />} />
               <Route
                 path="connectionRequests"

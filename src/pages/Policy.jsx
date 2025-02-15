@@ -1,6 +1,6 @@
 const Policy = () => {
   return (
-    <div className="bg-gray-900 min-h-screen flex items-center justify-center pt-16 px-4 md:px-0">
+    <div className="bg-gray-900 min-h-screen flex items-center justify-center pt-16 px-4 md:px-10">
       <div className="max-w-4xl w-full px-2 md:px-6 py-6 text-white">
         <div className="sm:text-center mb-6 sm:mb-10">
           <h1 className="text-3xl sm:text-4xl font-bold pt-8 sm:pt-10 mb-2 sm:mb-4">

@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 function Footer() {
   return (
     <footer className="bg-gradient-to-r shadow-lg from-gray-900 via-gray-800 to-gray-900 text-white py-6 ">
-      <div className=" mx-auto flex flex-col sm:flex-row justify-between items-center space-y-4 md:space-y-0 sm:px-10 md:px-14 lg:px-28 2xl:px-40">
+      <div className=" mx-auto flex flex-col sm:flex-row justify-between items-center space-y-4 md:space-y-0 sm:px-10 md:px-14 lg:px-16 2xl:px-40">
         <div className="flex space-x-10">
           <Link
             to="/"

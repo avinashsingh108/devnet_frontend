@@ -12,14 +12,14 @@ const PublicRoute = () => {
     const checkAuth = async () => {
       try {
         if (user) {
-          navigate("/", { replace: true });
+          navigate("/feed", { replace: true });
         } else {
           const response = await axios.get(BASE_URL + "/profile/view", {
             withCredentials: true,
           });
 
           if (response.data) {
-            navigate("/", { replace: true });
+            navigate("/feed", { replace: true });
           }
         }
       } catch (error) {
@@ -30,7 +30,7 @@ const PublicRoute = () => {
     checkAuth();
   }, [user, navigate]);
 
-  return user ? <Navigate to="/" replace /> : <Outlet />;
+  return user ? <Navigate to="/feed" replace /> : <Outlet />;
 };
 
 export default PublicRoute;

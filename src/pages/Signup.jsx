@@ -110,7 +110,7 @@ const Signup = () => {
 
       if (response.status === 200) {
         toast.success("Signed up successfully!");
-        navigate("/", { replace: true });
+        navigate("/feed", { replace: true });
       } else {
         toast.error(response.data.message || "Signup failed.");
       }
@@ -124,9 +124,14 @@ const Signup = () => {
   return (
     <div className="bg-gray-900 py-10 px-4 pt-32">
       <div className="w-full max-w-2xl mx-auto bg-gray-800 shadow-lg rounded-lg p-6 sm:p-8">
-        <h1 className="text-3xl font-semibold text-center mb-8 uppercase text-white bg-gray-800">
+        <h1 className="text-3xl font-semibold text-center mb-2 uppercase text-white">
           Sign up
         </h1>
+        <p className="text-sm text-gray-300 text-center mb-6">
+          <strong>Note:</strong> We collect this info to set up your profile.
+          Your data is secure with us.
+        </p>
+
         <form onSubmit={handleFormSubmit} className="space-y-4 ">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex flex-1 flex-col">
@@ -390,7 +395,7 @@ const Signup = () => {
         <p className="text-gray-400 text-center mt-4 text-sm">
           Already have an account?{" "}
           <Link
-            to="/"
+            to="/login"
             className="text-gray-300 underline hover:underline transition duration-300"
           >
             Login now

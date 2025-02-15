@@ -9,6 +9,7 @@ import {
   FaSignOutAlt,
   FaHome,
 } from "react-icons/fa";
+import { MdRssFeed } from "react-icons/md";
 import axios from "axios";
 import { BASE_URL } from "../constants";
 import { removeUser } from "../store/userSlice";
@@ -43,13 +44,13 @@ function Header() {
     }
   };
   return (
-    <header className="bg-gradient-to-r absolute top-0 left-0 right-0 from-gray-900 via-gray-800 to-gray-900 text-white py-4 px-4 lg:px-8 shadow-lg">
-      <div className="sm:px-10 md:px-14 lg:px-28 2xl:px-40 flex items-center justify-between">
+    <header className="bg-gradient-to-r absolute top-0 left-0 right-0 from-gray-900 via-gray-800 to-gray-900 text-white p-4 sm:px-10 md:px-14 lg:px-16 2xl:px-40 shadow-lg">
+      <div className="flex items-center justify-between">
         <Link
           to="/"
           className="text-2xl sm:text-3xl font-bold hover:text-gray-300 transition-colors"
         >
-          <img src="logo.png" className="size-9 sm:size-10 " />
+          <img src="logo.png" className="size-9 " />
         </Link>
 
         {user && (
@@ -58,13 +59,13 @@ function Header() {
               onClick={handleMenu}
               src={user?.profilePic}
               alt="User Profile"
-              className="size-10 sm:size-12 object-cover cursor-pointer rounded-full border border-gray-700 transition-all"
+              className="size-11 object-cover cursor-pointer rounded-full border border-gray-700 transition-all"
             />
 
             <div
               className={`fixed top-0 ${
                 showMenu ? "translate-x-0" : "translate-x-full"
-              } w-80 right-0 z-40 h-full flex flex-col bg-gray-900 shadow-lg transition-transform duration-300 p-6 text-lg font-semibold space-y-6 whitespace-nowrap`}
+              } w-80 right-0 z-40 h-full flex flex-col bg-gray-900 shadow-lg transition-transform duration-300 p-6 text-lg font-semibold space-y-4 whitespace-nowrap`}
             >
               <button
                 className="flex justify-center border-b-2 border-gray-800 p-2 w-full text-gray-300 hover:text-white  transition-all"
@@ -77,6 +78,12 @@ function Header() {
                 to="/"
               >
                 <FaHome className="mr-3" /> Home
+              </Link>
+              <Link
+                className="hover:bg-gray-700 px-4 py-3 rounded-lg flex items-center transition-all"
+                to="/feed"
+              >
+                <MdRssFeed className="mr-3 text-2xl" /> Feed
               </Link>
               <Link
                 className="hover:bg-gray-700 px-4 py-3 rounded-lg flex items-center transition-all"
