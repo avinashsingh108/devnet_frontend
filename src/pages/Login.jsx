@@ -13,12 +13,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const loginSchema = z.object({
   email: z
     .string()
-    .email("Invalid email address")
-    .nonempty("Email is required"),
+    .nonempty("Email is required")
+    .email("Invalid email address"),
   password: z
     .string()
-    .min(6, "Password must be at least 6 characters")
-    .nonempty("Password is required"),
+    .nonempty("Password is required")
+    .min(8, "Password must be at least 8 characters"),
 });
 
 function Login() {
